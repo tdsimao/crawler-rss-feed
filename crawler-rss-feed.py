@@ -1,15 +1,16 @@
 import json
 import argparse
 from urllib.request import urlopen
-from scrapy.crawler import CrawlerProcess
 from scrapy.http import Response, Request
-from scrapy.downloadermiddlewares.httpproxy import HttpProxyMiddleware
 from crawler.spiders.autoesporte import AutoEsporteSpider
 
+
+parser = argparse.ArgumentParser()
+parser.add_argument("-o", "--output", help="Output file",
+                    type=argparse.FileType('w'))
+
+
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-o", "--output", help="Output file",
-                        type=argparse.FileType('w'))
     args = parser.parse_args()
 
     spider = AutoEsporteSpider()
