@@ -120,8 +120,10 @@ OK
 
 # Comments
 
-In the file [crawler/spiders/autoesporte.py](crawler/spiders/autoesporte.py) I implemented the core of the crawler extending the XMLFeedSpider class.
+The core of the crawler was implemented in the file [crawler/spiders/autoesporte.py](crawler/spiders/autoesporte.py)  extending the XMLFeedSpider class from Scrapy.
 
-To parse the responses the libraries [Scrapy](https://scrapy.org/) and [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/)  were used.
+The libraries [Scrapy](https://scrapy.org/) and [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/)  were used to parse the responses.
 
 The tests where implemented in the file [crawler/tests/autoesporte.py](crawler/tests/autoesporte.py) using 	the default unit testing framework from Python [unittest](https://docs.python.org/3/library/unittest.html).
+
+The package Flask was used to setup the webservice and the authentication was made with the Flask-HTTPAuth extension.
