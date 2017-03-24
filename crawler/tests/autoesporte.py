@@ -37,6 +37,11 @@ class AutoEsporteSpiderTest(unittest.TestCase):
         results = self._get_results_from_file('samples/empty-item.xml')
         self.assertEqual([], results[0]['content'])
 
+    def test_text(self):
+        results = self._get_results_from_file('samples/single-item.xml')
+        text_item = results[0]['content'][0]
+        self.assertEqual("Parágrafo de exemplo", text_item['content'])
+        self.assertEqual("text", text_item['type'])
 
 if __name__ == '__main__':
     unittest.main()

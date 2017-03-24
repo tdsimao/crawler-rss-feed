@@ -1,4 +1,5 @@
 from scrapy.spiders import XMLFeedSpider
+from bs4 import BeautifulSoup
 
 
 class AutoEsporteSpider(XMLFeedSpider):
@@ -22,4 +23,26 @@ class AutoEsporteSpider(XMLFeedSpider):
         return node.xpath('link/text()').extract_first() or ""
 
     def get_content(self, node):
-        return []
+        raw_html = node.xpath('description/node()').extract_first()
+        if not raw_html:
+            return []
+        soup = BeautifulSoup(raw_html, 'lxml')
+        results = []
+        for child in soup.body.children:
+            item = self.get_item(child)
+            if item:
+                results.append(item)
+        return results
+
+    def get_item(self, soup):
+        if soup.name == 'p':
+            return self.get_text(soup)
+        else:
+            return None
+
+    def get_text(self, soup):
+        text = soup.text.strip()
+        if text:
+            return {"type": "text", "content": text}
+        else:
+            return None
