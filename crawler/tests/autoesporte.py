@@ -49,5 +49,13 @@ class AutoEsporteSpiderTest(unittest.TestCase):
         self.assertEqual("http://www.exemplo.com/exemplo.jpg", item['content'])
         self.assertEqual("image", item['type'])
 
+    def test_links(self):
+        results = self._get_results_from_file('samples/single-item.xml')
+        item = results[0]['content'][2]
+        self.assertEqual("http://www.exemplo.com/01.html", item['content'][0])
+        self.assertEqual("http://www.exemplo.com/02.html", item['content'][1])
+        self.assertEqual("links", item['type'])
+
+
 if __name__ == '__main__':
     unittest.main()

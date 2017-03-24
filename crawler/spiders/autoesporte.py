@@ -39,6 +39,8 @@ class AutoEsporteSpider(XMLFeedSpider):
             return self.get_text(soup)
         elif soup.name == 'div' and soup.find('img'):
             return self.get_image(soup)
+        elif soup.name == 'div' and soup.find('ul'):
+            return self.get_links(soup)
         else:
             return None
 
@@ -52,3 +54,11 @@ class AutoEsporteSpider(XMLFeedSpider):
     def get_image(self, soup):
         link = soup.img.get('src')
         return {"type": "image", "content": link}
+
+    def get_links(self, soup):
+        links = []
+        for li in soup.ul.find_all('a'):
+            link = li.get('href')
+            links.append(link)
+        return {"type": "links",
+                "content": links}
