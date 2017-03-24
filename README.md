@@ -46,16 +46,44 @@ Save items to json file 'autoesporte.json'
 Test crawler
 ```
 	$ python -m crawler.tests
+...........
+----------------------------------------------------------------------
+Ran 11 tests in 0.067s
+
+OK
 ```
 
 Test autoesporte crawler
 ```
 	$ python -m crawler.tests.autoesporte
+...........
+----------------------------------------------------------------------
+Ran 11 tests in 0.067s
+
+OK
 ```
 
 Verbose test
 ```
 	$ python -m unittest -v crawler.tests
+
+test_chalenge_example (crawler.tests.autoesporte.AutoEsporteSpiderTest) ... ok
+test_content (crawler.tests.autoesporte.AutoEsporteSpiderTest) ... ok
+test_empty_content (crawler.tests.autoesporte.AutoEsporteSpiderTest) ... ok
+test_empty_link (crawler.tests.autoesporte.AutoEsporteSpiderTest) ... ok
+test_empty_title (crawler.tests.autoesporte.AutoEsporteSpiderTest) ... ok
+test_image (crawler.tests.autoesporte.AutoEsporteSpiderTest) ... ok
+test_link (crawler.tests.autoesporte.AutoEsporteSpiderTest) ... ok
+test_links (crawler.tests.autoesporte.AutoEsporteSpiderTest) ... ok
+test_multiple_items (crawler.tests.autoesporte.AutoEsporteSpiderTest) ... ok
+test_text (crawler.tests.autoesporte.AutoEsporteSpiderTest) ... ok
+test_title (crawler.tests.autoesporte.AutoEsporteSpiderTest) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.077s
+
+OK
+
 ```
 
 In the file [crawler/spiders/autoesporte.py](crawler/spiders/autoesporte.py) I implemented the core of the crawler extending the XMLFeedSpider class.
