@@ -2,6 +2,12 @@
 Crawler for a rss feed.
 
 
+# How to install
+
+```
+	$ pip install -r requirements.txt
+```
+
 # Usage
 ```
 	$ scrapy crawl autoesporte
