@@ -11,4 +11,6 @@ class AutoEsporteSpider(XMLFeedSpider):
     def parse_node(self, response, node):
         item = {}
         item['title'] = node.xpath('title/text()').extract_first()
+        if not item['title']:
+            item['title'] = ""
         return item
