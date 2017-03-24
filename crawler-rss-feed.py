@@ -1,6 +1,5 @@
 import json
 import argparse
-import pprint
 from urllib.request import urlopen
 from scrapy.crawler import CrawlerProcess
 from scrapy.http import Response, Request
@@ -24,4 +23,4 @@ if __name__ == '__main__':
     if args.output:
         json.dump(feed, args.output)
     else:
-        pprint.pprint(feed)
+        print(feed)
