@@ -1,5 +1,6 @@
 import unittest
-from crawler.tests.fake_response import fake_response_from_file
+import json
+from crawler.tests.util import fake_response_from_file, get_full_path
 from crawler.spiders.autoesporte import AutoEsporteSpider
 
 
@@ -55,6 +56,12 @@ class AutoEsporteSpiderTest(unittest.TestCase):
         self.assertEqual("http://www.exemplo.com/01.html", item['content'][0])
         self.assertEqual("http://www.exemplo.com/02.html", item['content'][1])
         self.assertEqual("links", item['type'])
+
+    def test_chalenge_example(self):
+        results = self._get_results_from_file('samples/chalenge_example.xml')
+        with open(get_full_path('samples/chalenge_example.json')) as f:
+            expected = json.loads(f.read())
+        self.assertEqual(expected, results[0])
 
 
 if __name__ == '__main__':
