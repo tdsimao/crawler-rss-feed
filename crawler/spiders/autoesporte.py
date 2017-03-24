@@ -12,6 +12,7 @@ class AutoEsporteSpider(XMLFeedSpider):
         item = {}
         item['title'] = self.get_title(node)
         item['link'] = self.get_link(node)
+        item['content'] = self.get_content(node)
         return item
 
     def get_title(self, node):
@@ -19,3 +20,6 @@ class AutoEsporteSpider(XMLFeedSpider):
 
     def get_link(self, node):
         return node.xpath('link/text()').extract_first() or ""
+
+    def get_content(self, node):
+        return []
