@@ -12,7 +12,7 @@ def get_feed():
     response = Response(url=url, request=Request(url=url), body=body)
     response.encoding = 'utf-8'
     items = [{'item': item} for item in spider.parse(response)]
-    return items
+    return {'feed': items}
 
 
 parser = argparse.ArgumentParser()
