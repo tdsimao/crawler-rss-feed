@@ -39,9 +39,15 @@ class AutoEsporteSpiderTest(unittest.TestCase):
 
     def test_text(self):
         results = self._get_results_from_file('samples/single-item.xml')
-        text_item = results[0]['content'][0]
-        self.assertEqual("Parágrafo de exemplo", text_item['content'])
-        self.assertEqual("text", text_item['type'])
+        item = results[0]['content'][0]
+        self.assertEqual("Parágrafo de exemplo", item['content'])
+        self.assertEqual("text", item['type'])
+
+    def test_image(self):
+        results = self._get_results_from_file('samples/single-item.xml')
+        item = results[0]['content'][1]
+        self.assertEqual("http://www.exemplo.com/exemplo.jpg", item['content'])
+        self.assertEqual("image", item['type'])
 
 if __name__ == '__main__':
     unittest.main()
