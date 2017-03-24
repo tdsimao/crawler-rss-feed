@@ -63,6 +63,14 @@ class AutoEsporteSpiderTest(unittest.TestCase):
             expected = json.loads(f.read())
         self.assertEqual(expected, results[0])
 
+    def test_multiple_items(self):
+        results = self._get_results_from_file('samples/feed-24-03.xml')
+        self.assertEqual(22, len(results))
+        for item in results:
+            self.assertIs(str, type(item['title']))
+            self.assertIs(str, type(item['link']))
+            self.assertIs(list, type(item['content']))
+
 
 if __name__ == '__main__':
     unittest.main()
