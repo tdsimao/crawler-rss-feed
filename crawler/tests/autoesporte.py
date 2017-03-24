@@ -22,5 +22,19 @@ class AutoEsporteSpiderTest(unittest.TestCase):
         self.assertEqual(1, len(results))
         self.assertEqual("", results[0]['title'])
 
+    def test_link(self):
+        response = fake_response_from_file('samples/single-item.xml')
+        results = self.spider.parse(response)
+        results = list(results)
+        self.assertEqual(1, len(results))
+        self.assertEqual("http://www.example.com/", results[0]['link'])
+
+    def test_empty_link(self):
+        response = fake_response_from_file('samples/empty-item.xml')
+        results = self.spider.parse(response)
+        results = list(results)
+        self.assertEqual(1, len(results))
+        self.assertEqual("", results[0]['link'])
+
 if __name__ == '__main__':
     unittest.main()
