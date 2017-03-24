@@ -1,8 +1,8 @@
 # crawler-rss-feed
-Crawler for a rss feed.
+Crawler for the rss feed [http://revistaautoesporte.globo.com/rss/ultimas/feed.xml](http://revistaautoesporte.globo.com/rss/ultimas/feed.xml).
 
 
-# How to install
+# Install requirements
 
 ```
 	$ pip install -r requirements.txt
@@ -11,7 +11,7 @@ Crawler for a rss feed.
 # Usage
 
 
-## Using feed reader
+## Using the custom feed reader
 
 
 ```
@@ -25,6 +25,8 @@ Save items to json file 'autoesporte.json'
 ```
 
 ## Using default scrapy library
+Notice that the default scrapy library only returns items indepently, it does not aggregate them in a single json.
+
 ```
 	$ scrapy crawl autoesporte
 2017-03-24 16:22:09 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://revistaautoesporte.globo.com/rss/ultimas/feed.xml> (referer: None)
@@ -56,3 +58,8 @@ Verbose test
 	$ python -m unittest -v crawler.tests
 ```
 
+In the file [crawler/spiders/autoesporte.py](crawler/spiders/autoesporte.py) I implemented the core of the crawler extending the XMLFeedSpider class.
+
+To parse the responses the libraries [Scrapy](https://scrapy.org/) and [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/)  were used.
+
+The tests where implemented in the file [crawler/tests/autoesporte.py](crawler/tests/autoesporte.py) using 	the default unit testing framework from Python [unittest](https://docs.python.org/3/library/unittest.html).
